@@ -28,6 +28,10 @@
       ],
       "inline_shebang": "/bin/sh -x",
       "type": "shell"
+    },
+    {
+      "script": "scripts/cleanup_linux.sh",
+      "type": "shell"
     }
   ]
 }
