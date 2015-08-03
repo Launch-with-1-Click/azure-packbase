@@ -13,6 +13,7 @@
       "storage_account_container": "images",
       "os_type": "Linux",
       "os_image_label": "OpenLogic 7.1",
+      "ssh_pty" : true,
       "location": "Central US",
       "instance_size": "Small",
       "user_image_label": "PackerMade_OpenLogicImage"
