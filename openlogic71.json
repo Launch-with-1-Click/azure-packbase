@@ -1,0 +1,36 @@
+{
+  "variables": {
+    "sn": "{{env `AZURE_SN`}}",
+    "ps": "{{env `AZURE_PS`}}",
+    "sa": "{{env `AZURE_SA`}}"
+  },
+  "builders": [
+    {
+      "type": "azure",
+      "publish_settings_path": "{{user `ps`}}",
+      "subscription_name": "{{user `sn`}}",
+      "storage_account": "{{user `sa`}}",
+      "storage_account_container": "images",
+      "os_type": "Linux",
+      "os_image_label": "OpenLogic 7.1"",
+      "location": "Central US",
+      "instance_size": "Small",
+      "user_image_label": "PackerMade_OpenLogicImage"
+    }
+  ],
+  "provisioners": [
+    {
+      "execute_command": "chmod +x {{ .Path }}; {{ .Vars }} sudo -E sh '{{ .Path }}'",
+      "inline": [
+        "sudo apt-get update",
+        "sudo apt-get install -y mc",
+        "sudo apt-get install -y nodejs",
+        "sudo apt-get install -y npm",
+        "sudo npm install azure-cli -g"
+      ],
+      "inline_shebang": "/bin/sh -x",
+      "type": "shell"
+    }
+  ]
+}
+
